@@ -6,7 +6,7 @@ interface PayslipCardActionProps {
   color?: string;
 }
 
-export function PayslipCardAction({ icon = '→', color = '$blue10' }: PayslipCardActionProps) {
+export function PayslipCardAction({ icon = '→', color = '$yellow10' }: PayslipCardActionProps) {
   return (
     <Text color={color} fontSize="$5">
       {icon}

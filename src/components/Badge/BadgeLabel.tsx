@@ -7,7 +7,7 @@ interface BadgeLabelProps {
 }
 
 const textColors = {
-  default: '$blue1',
+  default: '$yellow1',
   secondary: '$gray11',
   destructive: '$red1',
   outline: '$gray11',

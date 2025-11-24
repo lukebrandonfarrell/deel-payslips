@@ -13,7 +13,7 @@ interface PayslipCardComponent {
 }
 
 // Main component that combines all parts
-const PayslipCard: PayslipCardComponent = {
+export const PayslipCard: PayslipCardComponent = {
   Provider: PayslipCardProvider,
   Frame: PayslipCardFrame,
   ID: PayslipCardID,
@@ -21,6 +21,5 @@ const PayslipCard: PayslipCardComponent = {
   Action: PayslipCardAction,
 };
 
-export default PayslipCard;
 export { PayslipCardAction, PayslipCardDate, PayslipCardFrame, PayslipCardID, PayslipCardProvider };
 

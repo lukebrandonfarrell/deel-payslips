@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import React, { useState } from 'react';
 import { ActivityIndicator, SafeAreaView, ScrollView } from 'react-native';
 import { Card, Text, YStack } from 'tamagui';
-import Badge from '../../components/Badge/Badge';
+import { Badge } from '../../components/Badge/Badge';
 import { downloadPayslip, previewPayslip } from '../../services/fileService';
 import { fetchPayslipById } from '../../services/payslipService';
 import { formatDate } from '../../utils/dateFormatter';
@@ -12,7 +12,7 @@ interface PayslipDetailsScreenProps {
   payslipId: string;
 }
 
-export default function PayslipDetailsScreen({ payslipId }: PayslipDetailsScreenProps) {
+export function PayslipDetailsScreen({ payslipId }: PayslipDetailsScreenProps) {
   const [downloading, setDownloading] = useState(false);
   const [previewing, setPreviewing] = useState(false);
 
@@ -101,7 +101,7 @@ export default function PayslipDetailsScreen({ payslipId }: PayslipDetailsScreen
           {/* Actions */}
           <YStack gap="$3" marginBottom="$6">
             <Button
-              theme="blue"
+              theme="yellow"
               onPress={handleDownload}
               disabled={downloading || previewing}
               width="100%"

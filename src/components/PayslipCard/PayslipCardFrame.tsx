@@ -11,7 +11,7 @@ export function PayslipCardFrame({ children }: PayslipCardFrameProps) {
 
   return (
     <Card
-      marginBottom="$3"
+      marginBottom="$1"
       opacity={0.7}
       elevate
       size="$4"
@@ -21,6 +21,7 @@ export function PayslipCardFrame({ children }: PayslipCardFrameProps) {
       hoverStyle={{ scale: 0.925 }}
       pressStyle={{ scale: 0.875 }}
       onPress={onPress}
+      padding="$4"
     >
       {children}
     </Card>

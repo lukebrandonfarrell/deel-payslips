@@ -9,12 +9,11 @@ interface BadgeComponent {
 }
 
 // Main component that combines all parts
-const Badge: BadgeComponent = {
+export const Badge: BadgeComponent = {
   Provider: BadgeProvider,
   Frame: BadgeFrame,
   Label: BadgeLabel,
 };
 
-export default Badge;
 export { BadgeFrame, BadgeLabel, BadgeProvider };
 

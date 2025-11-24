@@ -7,7 +7,7 @@ interface BadgeFrameProps {
 }
 
 const variantStyles = {
-  default: { backgroundColor: '$blue9', borderColor: 'transparent' },
+  default: { backgroundColor: '$yellow9', borderColor: 'transparent' },
   secondary: { backgroundColor: '$gray5', borderColor: 'transparent' },
   destructive: { backgroundColor: '$red9', borderColor: 'transparent' },
   outline: { backgroundColor: 'transparent', borderColor: '$gray8' },

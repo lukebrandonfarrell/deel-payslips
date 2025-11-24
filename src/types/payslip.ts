@@ -11,3 +11,9 @@ export interface Payslip extends PayslipData {
 }
 
 export type SortOrder = 'newest' | 'oldest';
+
+export interface PayslipFilters {
+  sortOrder?: SortOrder;
+  year?: number | null;
+  searchText?: string;
+}
