@@ -7,7 +7,7 @@ interface BadgeFrameProps {
 }
 
 const variantStyles = {
-  default: { backgroundColor: '$yellow9', borderColor: 'transparent' },
+  default: { backgroundColor: '$blue9', borderColor: 'transparent' },
   secondary: { backgroundColor: '$gray5', borderColor: 'transparent' },
   destructive: { backgroundColor: '$red9', borderColor: 'transparent' },
   outline: { backgroundColor: 'transparent', borderColor: '$gray8' },
@@ -19,7 +19,7 @@ export function BadgeFrame({ children, ...props }: BadgeFrameProps) {
   return (
     <XStack
       alignItems="center"
-      borderRadius="$10"
+      borderRadius="$2"
       borderWidth={1}
       paddingHorizontal="$2.5"
       paddingVertical="$0.5"

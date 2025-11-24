@@ -1,10 +1,10 @@
-import payslipsData from '../data/payslips.json';
-import { Payslip, PayslipData, PayslipFilters, SortOrder } from '../types/payslip';
-import { formatDateRange, getYear } from '../utils/dateFormatter';
+import payslipsData from '../../data/payslips.json';
+import { Payslip, PayslipData, PayslipFilters, SortOrder } from '../../types/payslip';
+import { formatDateRange, getYear } from '../../utils/dateFormatter';
 
 // Map file paths to actual assets
 const FILE_ASSETS: Record<string, any> = {
-  'sample-payslip.pdf': require('../../assets/sample-payslip.pdf'),
+  'sample-payslip.pdf': require('../../../assets/sample-payslip.pdf'),
   // Add more file mappings here as needed
 };
 
@@ -12,7 +12,7 @@ const FILE_ASSETS: Record<string, any> = {
  * Resolves file asset from file path
  */
 function resolveFileAsset(filePath: string): any {
-  return FILE_ASSETS[filePath] || require('../../assets/sample-payslip.pdf');
+  return FILE_ASSETS[filePath] || require('../../../assets/sample-payslip.pdf');
 }
 
 /**
@@ -103,8 +103,17 @@ export async function fetchPayslips(filters: PayslipFilters = {}): Promise<Paysl
  * Fetches a single payslip by ID
  */
 export async function fetchPayslipById(id: string): Promise<Payslip | undefined> {
-  const payslips = await fetchPayslips({ sortOrder: 'newest' }); // Sort order doesn't matter for single item
-  return payslips.find((p) => p.id === id);
+  const payslipsDataArray = (payslipsData as { payslips: PayslipData[] }).payslips;
+  const payslipData = payslipsDataArray.find((p) => p.id === id);
+  
+  if (!payslipData) {
+    return undefined;
+  }
+  
+  return {
+    ...payslipData,
+    file: resolveFileAsset(payslipData.filePath),
+  };
 }
 
 /**

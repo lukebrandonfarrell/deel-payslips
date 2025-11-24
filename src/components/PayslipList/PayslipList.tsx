@@ -4,7 +4,7 @@ import { useRouter } from 'expo-router';
 import React from 'react';
 import { StyleProp, ViewStyle } from 'react-native';
 import { Text, XStack, YStack } from 'tamagui';
-import { fetchPayslips } from '../../services/payslipService';
+import { fetchPayslips } from '../../services/payslipService/payslipService';
 import { Payslip, PayslipFilters } from '../../types/payslip';
 import { PayslipCard } from '../PayslipCard/PayslipCard';
 
@@ -27,7 +27,7 @@ export function PayslipList({ filterOptions, sortOrder, containerContentStyle }:
   const renderPayslipItem = React.useCallback(({ item }: { item: Payslip }) => (
     <PayslipCard.Provider
       payslip={item}
-      onPress={() => router.push(`/${item.id}`)}
+      onPress={() => router.push(`/${item.id}/detail`)}
     >
       <PayslipCard.Frame>
         <XStack alignItems="center" justifyContent="space-between">
