@@ -1,0 +1,89 @@
+{
+  "payslips": [
+    {
+      "id": "1",
+      "fromDate": "2024-11-01",
+      "toDate": "2024-11-30",
+      "filePath": "sample-payslip.pdf",
+      "fileType": "pdf"
+    },
+    {
+      "id": "2",
+      "fromDate": "2024-10-01",
+      "toDate": "2024-10-31",
+      "filePath": "sample-payslip.pdf",
+      "fileType": "pdf"
+    },
+    {
+      "id": "3",
+      "fromDate": "2024-09-01",
+      "toDate": "2024-09-30",
+      "filePath": "sample-payslip.pdf",
+      "fileType": "pdf"
+    },
+    {
+      "id": "4",
+      "fromDate": "2024-08-01",
+      "toDate": "2024-08-31",
+      "filePath": "sample-payslip.pdf",
+      "fileType": "pdf"
+    },
+    {
+      "id": "5",
+      "fromDate": "2024-07-01",
+      "toDate": "2024-07-31",
+      "filePath": "sample-payslip.pdf",
+      "fileType": "pdf"
+    },
+    {
+      "id": "6",
+      "fromDate": "2024-06-01",
+      "toDate": "2024-06-30",
+      "filePath": "sample-payslip.pdf",
+      "fileType": "pdf"
+    },
+    {
+      "id": "7",
+      "fromDate": "2024-05-01",
+      "toDate": "2024-05-31",
+      "filePath": "sample-payslip.pdf",
+      "fileType": "pdf"
+    },
+    {
+      "id": "8",
+      "fromDate": "2024-04-01",
+      "toDate": "2024-04-30",
+      "filePath": "sample-payslip.pdf",
+      "fileType": "pdf"
+    },
+    {
+      "id": "9",
+      "fromDate": "2024-03-01",
+      "toDate": "2024-03-31",
+      "filePath": "sample-payslip.pdf",
+      "fileType": "pdf"
+    },
+    {
+      "id": "10",
+      "fromDate": "2024-02-01",
+      "toDate": "2024-02-29",
+      "filePath": "sample-payslip.pdf",
+      "fileType": "pdf"
+    },
+    {
+      "id": "11",
+      "fromDate": "2024-01-01",
+      "toDate": "2024-01-31",
+      "filePath": "sample-payslip.pdf",
+      "fileType": "pdf"
+    },
+    {
+      "id": "12",
+      "fromDate": "2023-12-01",
+      "toDate": "2023-12-31",
+      "filePath": "sample-payslip.pdf",
+      "fileType": "pdf"
+    }
+  ]
+}
+
