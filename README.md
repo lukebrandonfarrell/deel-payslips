@@ -10,7 +10,8 @@
 
 ## 🛠 Tech Stack
 
-- **React Native** (Expo SDK 54) - Cross-platform mobile framework
+- **Expo** (SDK 54) - Development platform and toolchain for React Native
+- **Expo Go** - Mobile app for testing and development
 - **TypeScript** - Type-safe JavaScript
 - **Expo Router** - File-based navigation system
 - **TanStack Query** (React Query) - State management and data fetching

@@ -34,7 +34,6 @@ export function useFilePermission(): UseFilePermissionResult {
     setIsRequesting(true);
     try {
       const result = await requestAndroidFilePermission();
-      
       if (result.granted) {
         closeModal();
         return true;

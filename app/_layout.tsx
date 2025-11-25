@@ -2,6 +2,7 @@ import { useColorScheme } from '@/src/hooks/useColorScheme/useColorScheme';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
 import { DialogProvider } from '@tamagui/dialog';
+import { PortalProvider } from '@tamagui/portal';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { useFonts } from 'expo-font';
 import { Stack } from 'expo-router';
@@ -59,19 +60,21 @@ function RootLayoutNav() {
   const isDark = colorScheme === 'dark';
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <StatusBar style={isDark ? 'light' : 'dark'} />
-      <TamaguiProvider config={config} defaultTheme={isDark ? 'dark' : 'light'}>
-        <DialogProvider>
-          <ThemeProvider value={isDark ? DarkTheme : DefaultTheme}>
-            <Stack>
-              <Stack.Screen name="index" options={{ title: 'Payslips', headerBackTitle: "Back" }} />
-              <Stack.Screen name="[id]/detail" options={{ title: 'Payslip Details', headerBackTitle: "Back" }} />
-              <Stack.Screen name="[id]/preview" options={{ title: 'Payslip Preview', headerBackTitle: "Back" }} />
-            </Stack>
-          </ThemeProvider>
-        </DialogProvider>
-      </TamaguiProvider>
-    </QueryClientProvider>
+      <QueryClientProvider client={queryClient}>
+        <StatusBar style={isDark ? 'light' : 'dark'} />
+        <TamaguiProvider config={config} defaultTheme={isDark ? 'dark' : 'light'}>
+          <PortalProvider shouldAddRootHost>
+            <DialogProvider>
+              <ThemeProvider value={isDark ? DarkTheme : DefaultTheme}>
+                <Stack>
+                  <Stack.Screen name="index" options={{ title: 'Payslips', headerBackTitle: "Back" }} />
+                  <Stack.Screen name="[id]/detail" options={{ title: 'Payslip Details', headerBackTitle: "Back" }} />
+                  <Stack.Screen name="[id]/preview" options={{ title: 'Payslip Preview', headerBackTitle: "Back" }} />
+                </Stack>
+              </ThemeProvider>
+            </DialogProvider>
+          </PortalProvider>
+        </TamaguiProvider>
+      </QueryClientProvider>
   );
 }

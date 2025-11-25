@@ -1,6 +1,8 @@
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
-import { ActivityIndicator } from 'react-native';
+import { File, Paths } from 'expo-file-system';
+import * as Sharing from 'expo-sharing';
+import React, { useEffect } from 'react';
+import { ActivityIndicator, Platform } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { WebView } from 'react-native-webview';
 import { Text, YStack } from 'tamagui';
@@ -30,6 +32,48 @@ export function PDFPreviewPage({ payslipId }: PDFPreviewPageProps) {
     },
     enabled: !!payslip?.file,
   });
+
+  // On Android, open PDF externally using expo-sharing (handles file URI security)
+  useEffect(() => {
+    if (Platform.OS === 'android' && pdfUri && payslip) {
+      const openPdf = async () => {
+        try {
+          // Copy file to cache directory (same approach as previewPayslip)
+          const filename = `payslip-${payslip.id}.pdf`;
+          const sourceFile = new File(pdfUri);
+          const localFile = new File(Paths.cache, filename);
+
+          // Copy to cache if it doesn't exist
+          if (!localFile.exists) {
+            try {
+              sourceFile.copy(localFile);
+            } catch (copyError: unknown) {
+              const errorMessage = copyError instanceof Error ? copyError.message : String(copyError);
+              if (!errorMessage.includes('already exists') && !errorMessage.includes('same name')) {
+                throw copyError;
+              }
+            }
+          }
+
+          // Check if sharing is available
+          const isAvailable = await Sharing.isAvailableAsync();
+          if (!isAvailable) {
+            console.error('Sharing is not available on this device');
+            return;
+          }
+
+          // Open with native PDF viewer
+          await Sharing.shareAsync(localFile.uri, {
+            mimeType: 'application/pdf',
+          });
+        } catch (err) {
+          console.error('Failed to open PDF:', err);
+        }
+      };
+
+      openPdf();
+    }
+  }, [pdfUri, payslip]);
 
   if (isLoading || isLoadingUri) {
     return (
@@ -90,6 +134,35 @@ export function PDFPreviewPage({ payslipId }: PDFPreviewPageProps) {
     );
   }
 
+  // On Android, show a message that PDF is opening externally
+  if (Platform.OS === 'android') {
+    return (
+      <YStack 
+        flex={1} 
+        alignItems="center" 
+        justifyContent="center" 
+        padding="$4" 
+        backgroundColor="$background"
+        paddingTop={insets.top}
+        paddingBottom={insets.bottom}
+        paddingLeft={insets.left}
+        paddingRight={insets.right}
+        gap="$4"
+      >
+        <ActivityIndicator size="large" />
+        <YStack gap="$2" alignItems="center">
+          <Text fontSize="$6" textAlign="center">
+            Opening PDF...
+          </Text>
+          <Text fontSize="$4" color="$color10" textAlign="center">
+            The PDF will open in your default PDF viewer.
+          </Text>
+        </YStack>
+      </YStack>
+    );
+  }
+
+  // On iOS, use WebView (it works fine)
   return (
     <YStack 
       flex={1} 
@@ -112,7 +185,6 @@ export function PDFPreviewPage({ payslipId }: PDFPreviewPageProps) {
         javaScriptEnabled={true}
         // Allow file access for local PDFs
         allowFileAccess={true}
-        // For Android, allow universal access from file URLs
         originWhitelist={['*']}
       />
     </YStack>
