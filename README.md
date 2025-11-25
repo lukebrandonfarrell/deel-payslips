@@ -107,11 +107,11 @@ Tamagui is optimized for rendering with style extraction and tree-shaking for mi
 
 Expo Router was chosen for its file-based routing system, type safety, deep linking support, and native integration, which works on multiple platforms with a single codebase.
 
-**Code Quality**: The project uses Husky with lint-staged to enforce code quality standards. Before each commit, staged files are automatically linted with ESLint (with auto-fix) and type-checked with TypeScript, ensuring that only properly formatted and type-safe code enters the repository.
+The project uses Husky with lint-staged to enforce code quality standards. Before each commit, staged files are automatically linted with ESLint (with auto-fix) and type-checked with TypeScript, ensuring that only properly formatted and type-safe code enters the repository.
 
 ## Known Limitations
 
-**Offline Support**: The app doesn't handle offline scenarios. All data is in-memory, so this is less critical, but network-dependent features (if added) would need offline handling. This could be easily implemented by extending to a tool such as TanStack DB, whicj ios one of the readsons I chosed TanStack Query for, that it could easily be extneded to support offline-first capabilities.
+**Offline Support**: The app doesn't handle offline scenarios. All data is in-memory, so this is less critical, but network-dependent features (if added) would need offline handling. This could be easily implemented by extending to a tool such as [TanStack DB](https://tanstack.com/db/latest), which is one of the reasons I chose TanStack Query: it can be easily extended to support offline-first capabilities.
 
 **Service Layer**: The service layer is currently a collection of exported functions, but it could be improved with more complex service-based patterns, better separation of concerns, and stronger OOP principles. For this demo and for simplicity, it has been kept as a simple layer of functions.
 
