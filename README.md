@@ -38,7 +38,7 @@
    cd ios && pod install && cd ..
    ```
 
- 4. Start the Expo development server:
+4. Start the Expo development server:
    ```bash
    npm start
    ```
@@ -90,8 +90,18 @@ TanStack was chosen as an in-memory state management solution over Context/Redux
 
 Tamagui comes with a robust theming system that brings features like **Dark Mode out of the box**:
 
-![Light Mode](assets/images/light-mode-image.png)
-![Dark Mode](assets/images/dark-mode-image.png)
+<table>
+  <tr>
+    <td align="center">
+      <strong>Light Mode</strong><br/>
+      <img src="assets/images/light-mode-image.png" alt="Light Mode" width="300"/>
+    </td>
+    <td align="center">
+      <strong>Dark Mode</strong><br/>
+      <img src="assets/images/dark-mode-image.png" alt="Dark Mode" width="300"/>
+    </td>
+  </tr>
+</table>
 
 Tamagui is optimized for rendering with style extraction and tree-shaking for minimal bundle size with full TypeScript support with excellent type inference.
 
