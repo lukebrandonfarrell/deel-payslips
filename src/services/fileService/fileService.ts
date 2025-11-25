@@ -2,13 +2,12 @@ import { Asset } from 'expo-asset';
 import { File, Paths } from 'expo-file-system';
 import * as Sharing from 'expo-sharing';
 import { Alert } from 'react-native';
-import { Payslip } from '../../types/payslip';
-import { ERROR_MESSAGES } from '../../utils/constants';
+import { AssetSource, Payslip } from '../../types/payslip';
 
 /**
  * Resolves the URI from an asset (require() result)
  */
-export async function resolveAssetUri(asset: any): Promise<string> {
+export async function resolveAssetUri(asset: AssetSource): Promise<string> {
   // If it's already a string URI, return it
   if (typeof asset === 'string') {
     if (!asset) {
@@ -105,7 +104,7 @@ export async function downloadPayslip(payslip: Payslip): Promise<boolean> {
     return true;
   } catch (error) {
     console.error('Download error:', error);
-    Alert.alert('Error', ERROR_MESSAGES.DOWNLOAD_FAILED);
+    Alert.alert('Error', 'Failed to download payslip. Please try again.');
     return false;
   }
 }
@@ -169,9 +168,10 @@ export async function previewPayslip(payslip: Payslip): Promise<boolean> {
     if (!localFile.exists) {
       try {
         sourceFile.copy(localFile);
-      } catch (copyError: any) {
+      } catch (copyError: unknown) {
         // If copy fails because file already exists, that's okay - we'll use the existing file
-        if (copyError?.message?.includes('already exists') || copyError?.message?.includes('same name')) {
+        const errorMessage = copyError instanceof Error ? copyError.message : String(copyError);
+        if (errorMessage.includes('already exists') || errorMessage.includes('same name')) {
           // File already exists, which is fine - we'll use it
           console.log('File already exists, using existing file');
         } else {

@@ -1,9 +1,9 @@
 import payslipsData from '../../data/payslips.json';
-import { Payslip, PayslipData, PayslipFilters, SortOrder } from '../../types/payslip';
-import { formatDateRange, getYear } from '../../utils/dateFormatter';
+import { AssetSource, Payslip, PayslipData, PayslipFilters, SortOrder } from '../../types/payslip';
+import { formatDateRange, getYear } from '../dateServices/dateServices';
 
 // Map file paths to actual assets
-const FILE_ASSETS: Record<string, any> = {
+const FILE_ASSETS: Record<string, AssetSource> = {
   'sample-payslip.pdf': require('../../../assets/sample-payslip.pdf'),
   // Add more file mappings here as needed
 };
@@ -11,7 +11,7 @@ const FILE_ASSETS: Record<string, any> = {
 /**
  * Resolves file asset from file path
  */
-function resolveFileAsset(filePath: string): any {
+function resolveFileAsset(filePath: string): AssetSource {
   return FILE_ASSETS[filePath] || require('../../../assets/sample-payslip.pdf');
 }
 

@@ -37,7 +37,7 @@ export function PDFPreviewPage({ payslipId }: PDFPreviewPageProps) {
         flex={1} 
         alignItems="center" 
         justifyContent="center" 
-        backgroundColor="$red"
+        backgroundColor="$background"
         paddingTop={insets.top}
         paddingBottom={insets.bottom}
         paddingLeft={insets.left}

@@ -7,10 +7,10 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Card, Text, YStack } from 'tamagui';
 import { Badge } from '../../components/Badge/Badge';
 import { PermissionModal } from '../../components/PermissionModal/PermissionModal';
+import { checkFilePermission, useFilePermission } from '../../hooks/useFilePermissions/useFilePermissions';
+import { formatDate } from '../../services/dateServices/dateServices';
 import { downloadPayslip, isPayslipDownloaded, openDownloadedPayslip } from '../../services/fileService/fileService';
 import { fetchPayslipById } from '../../services/payslipService/payslipService';
-import { checkFilePermission, useFilePermission } from '../../services/permissionsService/useFilePermission';
-import { formatDate } from '../../utils/dateFormatter';
 
 interface PayslipDetailsScreenProps {
   payslipId: string;

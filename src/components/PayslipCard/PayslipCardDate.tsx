@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text } from 'tamagui';
-import { formatDateRange } from '../../utils/dateFormatter';
+import { formatDateRange } from '../../services/dateServices/dateServices';
 import { usePayslipCardContext } from './PayslipCardProvider';
 
 export function PayslipCardDate() {

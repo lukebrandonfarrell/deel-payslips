@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react';
 import { Platform } from 'react-native';
-import { checkAndRequestFilePermission, requestAndroidFilePermission, showPermissionErrorAlert } from './permissionsService';
+import { checkAndRequestFilePermission, requestAndroidFilePermission, showPermissionErrorAlert } from '../../services/permissionsService/permissionsService';
 
 interface UseFilePermissionResult {
   showModal: boolean;

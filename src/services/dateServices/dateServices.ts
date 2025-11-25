@@ -51,3 +51,4 @@ export function formatDateRange(fromDate: string, toDate: string): string {
 export function getYear(date: string): number {
   return new Date(date).getFullYear();
 }
+
